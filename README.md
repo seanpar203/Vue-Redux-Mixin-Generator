@@ -109,7 +109,7 @@ export const UserMixin = ({
 
 
 ## Solution
-Create mixins that allow you to resuse methods that call `store.dispatch()` for your across your entire app.
+Create mixins that allow you to resuse methods that call `store.dispatch()` importable across your entire app.
 ```js
 // Store & Actions
 import store from './store.js';
