@@ -3,7 +3,7 @@ A simple function that returns a reusable object of redux dispatch action functi
 
 
 ## Installation 
-`npm --save vue-mixin-generator`
+`npm install --save vue-mixin-generator`
 
 
 ## Why Should I Use This?
