@@ -48,3 +48,6 @@ const prefixedPropName = (prefix, prop) => prefix + firstCharUpper(prop);
  * @param {String} str
  */
 const firstCharUpper = str => str.charAt(0).toUpperCase() + str.substr(1);
+
+
+module.exports = reVueMixinGen;
