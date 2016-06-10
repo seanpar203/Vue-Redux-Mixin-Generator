@@ -1,6 +1,6 @@
 {
   "name": "vue-mixin-generator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple function that returns a reusable object of redux action functions thats pluggable to Vue's mixins option.",
   "main": "index.js",
   "scripts": {
