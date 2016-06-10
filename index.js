@@ -7,7 +7,7 @@
  * Function returning Vue Mixin Object.
  * @param {Object} options - Containing prefix, actions & store parameters.
  */
-const reVueMixinGen = (options) => createMixin(options.prefix, options.actions, options.store);
+const reVueMixinGen = options => createMixin(options.prefix, options.actions, options.store);
 
 
 /**
@@ -17,18 +17,18 @@ const reVueMixinGen = (options) => createMixin(options.prefix, options.actions, 
  * @param {Object} store - Redux store class.
  */
 const createMixin = (prefix, actions, store) => {
-	let methods = {};
+	const methods = {};
 
-	for (let i = 0; i < actions.length; i++) {
-		let action = actions[i];
+    	actions.forEach(action => {
 		let propName = action.name;
 
-		if (prefix && prefix.length > 0) {
-			propName = camelize(prefix + ' ' + action.name);
+		if (prefix) {
+			propName = camelize(`${prefix} ${action.name}`);
 		}
 
 		methods[propName] = (...params) => store.dispatch(action(...params));
-	}
+	});
+    
 	return {methods};
 };
 
@@ -36,11 +36,12 @@ const createMixin = (prefix, actions, store) => {
  * Camel case string
  * @param {String} str - new String camelCased.
  */
-const camelize = (str) => str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
-		if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
-		return index == 0 ? match.toLowerCase() : match.toUpperCase();
-	}
-);
+const camelize = str => str.toLowerCase().replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+	if (Number(match) === 0) {
+        	return ''; // or if (/\s+/.test(match)) for white spaces
+    	}
 
+    	return index === 0 ? match.toLowerCase() : match.toUpperCase();
+});
 
 module.exports = reVueMixinGen;
