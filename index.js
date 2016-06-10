@@ -39,6 +39,12 @@ const createMixin = (prefix, actions, store) => {
 /**
  * Returns a new string of prefixed property name.
  * @param {String} prefix - option passed into function.
- * @param {string} str -  current action name in forEach iteration.
+ * @param {string} prop -  current action name in forEach iteration.
  */
-const prefixedPropName = (prefix, str) => prefix + str.charAt(0).toUpperCase() + str.substr(1);
+const prefixedPropName = (prefix, prop) => prefix + firstCharUpper(prop);
+
+/**
+ * Returns a string with the first character uppercase
+ * @param {String} str
+ */
+const firstCharUpper = str => str.charAt(0).toUpperCase() + str.substr(1);
