@@ -19,29 +19,17 @@ const reVueMixinGen = options => createMixin(options.prefix, options.actions, op
 const createMixin = (prefix, actions, store) => {
 	const methods = {};
 
-    	actions.forEach(action => {
+	actions.forEach(action => {
 		let propName = action.name;
 
 		if (prefix) {
-			propName = camelize(`${prefix} ${action.name}`);
+			propName = prefixedPropName(prefix, propName);
 		}
 
 		methods[propName] = (...params) => store.dispatch(action(...params));
 	});
-    
+
 	return {methods};
 };
 
-/**
- * Camel case string
- * @param {String} str - new String camelCased.
- */
-const camelize = str => str.toLowerCase().replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
-	if (Number(match) === 0) {
-        	return ''; // or if (/\s+/.test(match)) for white spaces
-    	}
-
-    	return index === 0 ? match.toLowerCase() : match.toUpperCase();
-});
-
-module.exports = reVueMixinGen;
+const prefixedPropName = (prefix, str) => prefix + str.charAt(0).toUpperCase() + str.substr(1);
