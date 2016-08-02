@@ -52,8 +52,8 @@ function user(state = {}, action) {
 ## Params
 ```js
 {
-  prefix:  [optional] {String},
-  actions: required array action methods {Array},
+  prefix:  [optional], method name prefix {String},
+  actions: required, array action methods {Array},
   store:   required, Store Class {Object}
 }
 ```
