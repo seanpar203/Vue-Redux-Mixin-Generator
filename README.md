@@ -7,7 +7,7 @@ A simple function that returns a reusable object of redux dispatch action functi
 
 
 ## Why Should I Use This?
-It allows to create reusable Mixins that utilizes both [Vue](https://github.com/vuejs/vue), [revue](https://github.com/revue/revue) and [Redux](https://github.com/reactjs/redux)
+It allows to create reusable Mixins that utilizes [Vue](https://github.com/vuejs/vue), [revue](https://github.com/revue/revue) and [Redux](https://github.com/reactjs/redux)
 
 #### Actions
 ```js
