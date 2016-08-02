@@ -7,11 +7,7 @@ A simple function that returns a reusable object of redux dispatch action functi
 
 
 ## Why Should I Use This?
-I built this to help myself and others to reduce the amount of code necessary to get up and running with redux. I love the concept but I found it tedious to create actions, reducers and then have to create Vue methods that call the `store.dispatch()` method. Knowing how simple it was to import a plain object and plug it into Vue's mixins object, I decided to create this to generate reuseable methods that can be used all over an application. 
-
-## Usage
-
-A typical redux flow looks like:
+It allows to create reusable Mixins that utilizes both [Vue](https://github.com/vuejs/vue),[revue](https://github.com/revue/revue) and [Redux](https://github.com/reactjs/redux)
 
 #### Actions
 ```js
@@ -96,35 +92,14 @@ UserMixin = {
 }
 ```
 
-## Using as Vue Mixin.
+## Adding to Vue component.
 
 ```js
 import UserMixin from './mixins.js'
 
-{
+export default {
   template: require('./path/to/file.html'),
   mixins: [UserMixin]
-  
-  data () {
-    return {
-      user: store.getState(),
-      error: ''
-    }
-  },
-  
-  // Now methods can be 100% focused on data manipulation
-  methods: {
-  
-    changeName(name) {
-      return name.length > 0 ? this.storeUpdateUser(name) : false
-    },
-    
-    fetchUserProfile() {
-      $http.get('api/user/profile')
-        .then(res => this.storeUpdateUser(res.data))
-        .then(err => this.error = err.data)
-    }
-  }
 }
 ```
 
@@ -133,18 +108,10 @@ When attaching a mixin to a component the methods become available via `this` ju
 EX:
 ``` js
 import UserMixin from './mixins.js'
-{
+
+export default {
  template: require('./path/to/file.html'),
  mixins: [UserMixin],
- 
- data() {
-  return {
-    user: {
-      firstName: 'Sean',
-      lastName: 'Parsons'
-    }
-  }
- },
  
  attached() {
     this.storeSetUser(this.user);
