@@ -9,6 +9,18 @@ A simple function that returns a reusable object of redux dispatch action functi
 ## Why Should I Use This?
 It allows to create reusable Mixins that utilizes [Vue](https://github.com/vuejs/vue), [revue](https://github.com/revue/revue) and [Redux](https://github.com/reactjs/redux)
 
+## Params
+```js
+{
+  prefix:  [optional], method name prefix {String},
+  actions: required, array action methods {Array},
+  store:   required, Store Class {Object}
+}
+```
+
+
+## Usage.
+
 #### Actions
 ```js
 export const SET_USER = 'SET_USER';
@@ -44,19 +56,8 @@ function user(state = {}, action) {
 	}
 }
 ```
-
-## Params
-```js
-{
-  prefix:  [optional], method name prefix {String},
-  actions: required, array action methods {Array},
-  store:   required, Store Class {Object}
-}
-```
-
-
-## Example.
-Create mixins that allow you to resuse methods that call `store.dispatch()` importable across your entire app.
+## Creating Mixin
+Import your Actions to create the mixins.
 ```js
 // Store & Actions
 import store from './store.js';
@@ -64,7 +65,6 @@ import {setUser, clearUser, updateUser} from './actions.js';
 
 // Mixin Generator
 import VueMixinGen from 'reVueMixinGen';
-
 
 
 /** Create New Mixin Object */
@@ -75,7 +75,7 @@ export const UserMixin = VueMixinGen({
 })
 
 
-/** Result of function above. */
+/** Result of VueMixinGen above. */
 
 UserMixin = {
     methods: {
