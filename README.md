@@ -104,8 +104,7 @@ export default {
 ```
 
 ## Methods Usage
-When attaching a mixin to a component the methods become available via `this` just like any other method in the $vm scope.
-EX:
+When attaching a mixin to a component the methods become available via `this` just like any other Vue method.
 ``` js
 import UserMixin from './mixins.js'
 
